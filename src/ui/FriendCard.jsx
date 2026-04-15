@@ -15,7 +15,7 @@ const FriendCard = ({ friend }) => {
         ></Image>
       </figure>
       <div className="flex flex-col space-y-2 items-center text-center">
-        <h2 className="card-title pt-2">{friend.name}</h2>
+        <h2 className="card-title pt-2 text-red-400">{friend.name}</h2>
         <p>
           A card component has a figure, a body part, and inside body there are
           title and actions parts
