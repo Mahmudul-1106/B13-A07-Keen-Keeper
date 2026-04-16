@@ -1,8 +1,18 @@
 "use client";
+import { differenceInCalendarDays } from "date-fns";
 import { TimeLineContext } from "@/context/install.context";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import React, { use, useContext, useEffect, useState } from "react";
+import { FiPhoneCall } from "react-icons/fi";
+import {
+  MdOutlineArchive,
+  MdOutlineDeleteOutline,
+  MdOutlineTextsms,
+} from "react-icons/md";
+import { IoVideocamOutline } from "react-icons/io5";
+import toast from "react-hot-toast";
+import { CiBellOn } from "react-icons/ci";
 
 const friendDetailsPage = () => {
   const { timeline, setTimeline } = useContext(TimeLineContext);
@@ -28,6 +38,7 @@ const friendDetailsPage = () => {
 
   const friendsList = [...friends];
   const findFriend = friendsList.find((friend) => friend.id == friendId);
+  // console.log(findFriend);
 
   // 2. Prevent rendering if data isn't ready yet
   if (loading) {
@@ -49,13 +60,31 @@ const friendDetailsPage = () => {
     return <div className="p-10">Friend with ID {friendId} not found.</div>;
   }
 
-  const { name, picture } = findFriend;
+  const {
+    name,
+    picture,
+    status,
+    tags,
+    bio,
+    email,
+    next_due_date,
+    goal,
+    days_since_contact,
+  } = findFriend;
+
+  const dateObj = new Date(next_due_date);
+
+  const dueDate = dateObj.toLocaleDateString("en-US", {
+    month: "long", // "May"
+    day: "2-digit", // "05"
+    year: "numeric", // "2026"
+  });
   return (
-    <div className="flex justify-between">
-      <p>Timeline:{timeline.length}</p>
+    <div className="flex gap-4 py-10">
+      {/* <p>Timeline:{timeline.length}</p> */}
       {/* Left Side */}
       <div className="w-1/3">
-        <div className="card bg-base-100 shadow-sm">
+        <div className="card py-10 bg-base-100 shadow-sm">
           <figure className="px-10 pt-5">
             <Image
               className="rounded-full"
@@ -67,60 +96,174 @@ const friendDetailsPage = () => {
           </figure>
           <div className="flex flex-col space-y-2 items-center text-center">
             <h2 className="card-title pt-2">{name}</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
+            <div
+              className={`badge text-white ${status === "on-track" ? "bg-[#244D3F]" : status === "almost due" ? "bg-[#EFAD44]" : "bg-[#EF4444]"}`}
+            >
+              {status.toUpperCase()}
+            </div>
+            <div className="flex space-x-2">
+              {tags.map((data, index) => (
+                <div
+                  key={index}
+                  className="badge text-[#244D3F] bg-[#CBFADB] badge-outline"
+                >
+                  {data.toUpperCase()}
+                </div>
+              ))}
+            </div>
+            <p className=" px-5 text-[#64748B]">{`"${bio}"`}</p>
+            <p className=" px-5 text-[#64748B]">{email}</p>
           </div>
+        </div>
+        <div className="mt-5 space-y-3">
+          <button className="btn  w-full">
+            <CiBellOn /> Snooze 2 weeks
+          </button>
+          <button className="btn  w-full">
+            <MdOutlineArchive /> Archive
+          </button>
+          <button className="btn  w-full text-red-500">
+            <MdOutlineDeleteOutline /> Delete
+          </button>
         </div>
       </div>
       {/* Right Side */}
-      <div className="">
-        <button
-          className="btn"
-          onClick={() => {
-            setTimeline([
-              ...timeline,
-              {
-                findFriend,
-                actionType: "call",
-                time: new Date().toDateString(),
-              },
-            ]);
-          }}
-        >
-          Call
-        </button>
-        <button
-          onClick={() => {
-            setTimeline([
-              ...timeline,
-              {
-                findFriend,
-                actionType: "text",
-                time: new Date().toDateString(),
-              },
-            ]);
-          }}
-          className="btn"
-        >
-          Text
-        </button>
-        <button
-          onClick={() => {
-            setTimeline([
-              ...timeline,
-              {
-                findFriend,
-                actionType: "video",
-                time: new Date().toDateString(),
-              },
-            ]);
-          }}
-          className="btn"
-        >
-          Video
-        </button>
+      <div className="flex-1">
+        {/* <div className="">
+          <button
+            className="btn"
+            onClick={() => {
+              setTimeline([
+                ...timeline,
+                {
+                  findFriend,
+                  actionType: "call",
+                  time: new Date().toDateString(),
+                },
+              ]);
+            }}
+          >
+            Call
+          </button>
+          <button
+            onClick={() => {
+              setTimeline([
+                ...timeline,
+                {
+                  findFriend,
+                  actionType: "text",
+                  time: new Date().toDateString(),
+                },
+              ]);
+            }}
+            className="btn"
+          >
+            Text
+          </button>
+          <button
+            onClick={() => {
+              setTimeline([
+                ...timeline,
+                {
+                  findFriend,
+                  actionType: "video",
+                  time: new Date().toDateString(),
+                },
+              ]);
+            }}
+            className="btn"
+          >
+            Video
+          </button>
+        </div> */}
+        <div>
+          <div className="flex gap-4">
+            <div className="py-10 bg-[#FFF]  text-center rounded-2xl px-5 w-full  shadow-md">
+              <p className="text-3xl font-bold ">{days_since_contact}</p>
+              <p className="text-[#64748B]">Days Since Contact</p>
+            </div>
+
+            <div className="py-10 bg-[#FFF]   text-center rounded-2xl px-5 w-full  shadow-md">
+              <p className="text-3xl font-bold ">{goal}</p>
+              <p className="text-[#64748B]">Goal(Days)</p>
+            </div>
+
+            <div className="py-10 bg-[#FFF]   text-center rounded-2xl px-5 w-full  shadow-md">
+              <p className="text-3xl font-bold">{dueDate}</p>
+              <p className="text-[#64748B]">Next Due</p>
+            </div>
+          </div>
+
+          <div className="flex justify-between py-5 mt-5 bg-[#FFF]    rounded-2xl px-5 w-full  shadow-md">
+            <div>
+              <p className=" font-bold ">Relationship Goal</p>
+              <p className="">
+                Connect every{" "}
+                <span className="font-bold">{goal} Days</span>{" "}
+              </p>
+            </div>
+            <div>
+              <button className="btn">Edit</button>
+            </div>
+          </div>
+
+          <div className="flex flex-col py-5 mt-5 bg-[#FFF]    rounded-2xl px-5 w-full  shadow-md">
+            <div>
+              <p className=" font-bold ">Quick Check-In</p>
+            </div>
+            <div className="flex gap-2 py-5">
+              <button
+                className="btn btn-wide"
+                onClick={() => {
+                  (setTimeline([
+                    ...timeline,
+                    {
+                      findFriend,
+                      actionType: "call",
+                      time: new Date().toDateString(),
+                    },
+                  ]),
+                    toast.success(`Call with ${name}.`));
+                }}
+              >
+                <FiPhoneCall /> Call
+              </button>
+
+              <button
+                className="btn btn-wide"
+                onClick={() => {
+                  (setTimeline([
+                    ...timeline,
+                    {
+                      findFriend,
+                      actionType: "text",
+                      time: new Date().toDateString(),
+                    },
+                  ]),
+                    toast.success(`Text with ${name}.`));
+                }}
+              >
+                <MdOutlineTextsms /> Text
+              </button>
+              <button
+                className="btn btn-wide"
+                onClick={() => {
+                  (setTimeline([
+                    ...timeline,
+                    {
+                      findFriend,
+                      actionType: "video",
+                      time: new Date().toDateString(),
+                    },
+                  ]),
+                    toast.success(`Video with ${name}.`));
+                }}
+              >
+                <IoVideocamOutline /> Video
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
