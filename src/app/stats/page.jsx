@@ -31,7 +31,7 @@ const RoundedPieChart = () => {
 
   if (call.length === 0 && text.length === 0 && video.length === 0) {
     return (
-      <div className="px-5 mx-auto">
+      <div className="px-5 mx-auto mt-28">
         <h3 className="text-3xl font-bold mt-5">Friendship Analytics</h3>
         <div className="py-10 my-4  text-center rounded-2xl px-5 w-full  shadow-md">
           <p className="text-xl font-bold text-cyan-500">

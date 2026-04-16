@@ -38,7 +38,7 @@ const timelinePage = () => {
 
   // console.log(timeline, "From Timeline Page");
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto mt-28">
       <p className="text-3xl font-semibold mt-5">TimeLine</p>
 
       <div className="flex justify-center mt-3">

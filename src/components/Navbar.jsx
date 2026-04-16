@@ -7,7 +7,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <div className=" bg-base-100 shadow-sm py-3">
+    <div className=" bg-base-100 shadow-sm py-3 fixed top-0 left-0 w-full z-50 ">
       <div className="flex flex-col sm:flex-row justify-between items-center container mx-auto">
         <div>
           <Link href={"/"} className="btn btn-ghost text-xl">

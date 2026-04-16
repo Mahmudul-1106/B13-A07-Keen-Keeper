@@ -80,10 +80,10 @@ const friendDetailsPage = () => {
     year: "numeric", // "2026"
   });
   return (
-    <div className="flex gap-4 py-10">
+    <div className="flex flex-col lg:flex-row gap-4 py-10 mt-14">
       {/* <p>Timeline:{timeline.length}</p> */}
       {/* Left Side */}
-      <div className="w-1/3">
+      <div className="w-full lg:w-1/3">
         <div className="card py-10 bg-base-100 shadow-sm">
           <figure className="px-10 pt-5">
             <Image
@@ -129,55 +129,8 @@ const friendDetailsPage = () => {
       </div>
       {/* Right Side */}
       <div className="flex-1">
-        {/* <div className="">
-          <button
-            className="btn"
-            onClick={() => {
-              setTimeline([
-                ...timeline,
-                {
-                  findFriend,
-                  actionType: "call",
-                  time: new Date().toDateString(),
-                },
-              ]);
-            }}
-          >
-            Call
-          </button>
-          <button
-            onClick={() => {
-              setTimeline([
-                ...timeline,
-                {
-                  findFriend,
-                  actionType: "text",
-                  time: new Date().toDateString(),
-                },
-              ]);
-            }}
-            className="btn"
-          >
-            Text
-          </button>
-          <button
-            onClick={() => {
-              setTimeline([
-                ...timeline,
-                {
-                  findFriend,
-                  actionType: "video",
-                  time: new Date().toDateString(),
-                },
-              ]);
-            }}
-            className="btn"
-          >
-            Video
-          </button>
-        </div> */}
         <div>
-          <div className="flex gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="py-10 bg-[#FFF]  text-center rounded-2xl px-5 w-full  shadow-md">
               <p className="text-3xl font-bold ">{days_since_contact}</p>
               <p className="text-[#64748B]">Days Since Contact</p>
@@ -211,9 +164,9 @@ const friendDetailsPage = () => {
             <div>
               <p className=" font-bold ">Quick Check-In</p>
             </div>
-            <div className="flex gap-2 py-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 py-5">
               <button
-                className="btn btn-wide"
+                className="btn w-full md:btn-wide"
                 onClick={() => {
                   (setTimeline([
                     ...timeline,
@@ -230,7 +183,7 @@ const friendDetailsPage = () => {
               </button>
 
               <button
-                className="btn btn-wide"
+                className="btn w-full md:btn-wide"
                 onClick={() => {
                   (setTimeline([
                     ...timeline,
@@ -246,7 +199,7 @@ const friendDetailsPage = () => {
                 <MdOutlineTextsms /> Text
               </button>
               <button
-                className="btn btn-wide"
+                className="btn w-full md:btn-wide"
                 onClick={() => {
                   (setTimeline([
                     ...timeline,
