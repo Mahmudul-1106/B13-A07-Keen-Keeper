@@ -1,6 +1,6 @@
 import React from 'react';
 
-const loadingPage = () => {
+const ingPage = () => {
     return (
         <div>
             <span className="loading loading-bars loading-xl"></span>

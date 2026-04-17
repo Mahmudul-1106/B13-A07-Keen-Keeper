@@ -14,7 +14,7 @@ export default function Home() {
     .then(data=> setFriends(data))
   }, [])
 
-  console.log(friends);
+  // console.log(friends);
   return (
 
     <div className="mt-28">
