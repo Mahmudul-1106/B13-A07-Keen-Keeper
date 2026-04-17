@@ -3,16 +3,27 @@ import FriendCard from "@/ui/FriendCard";
 import Image from "next/image";
 import { use, useEffect, useState } from "react";
 import { MdAdd } from "react-icons/md";
+import Loader from "@/components/Loader";
 
 
 export default function Home() {
   const [friends, setFriends] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // 1. Start as true
 
   useEffect(() =>{
+    setIsLoading(true);
     fetch('/friends.json')
     .then(res=> res.json())
-    .then(data=> setFriends(data))
+    .then(data => {
+        setFriends(data);
+        setIsLoading(false); // 2. Set to false when data arrives
+      })
+      .catch(() => setIsLoading(false));
   }, [])
+
+  if (isLoading) {
+    return <Loader></Loader> 
+  }
 
   // console.log(friends);
   return (
@@ -23,7 +34,7 @@ export default function Home() {
     <div className="  my-10 border-b-2 border-[#E9E9E9]">
       <h1 className="text-5xl font-bold text-center">Friends to keep close in your life</h1>
       <p className="text-center text-[#64748B] py-5">Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.</p>
-      <div className="flex justify-center"><button className="btn bg-[#244D3F] text-white"><MdAdd /> Add Friend</button></div>
+      <div className="flex justify-center"><button className="btn bg-[#244D3F] text-white"><MdAdd className="w-5 h-5"/> Add Friend</button></div>
 
       <div className="grid grid-cols-2  md:grid-cols-4  gap-4 my-10">
             <div className="py-10 bg-[#FFF]  text-center rounded-2xl px-5 w-full  shadow-md">

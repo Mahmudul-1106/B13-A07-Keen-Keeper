@@ -8,7 +8,6 @@ const Footer = () => {
       <div className="flex items-center justify-center flex-col text-center sm:footer-horizontal mb-10">
         <div>
           <h1 className="text-3xl md:text-7xl font-bold mb-5">KeenKeeper</h1>
-          {/* <img src={footerLogo} alt="" /> */}
           <p>
             Your personal shelf of meaningful connections. Browse, tend, and
             nurture the relationships that matter most.
@@ -23,21 +22,21 @@ const Footer = () => {
               target="blank"
               className="link link-hover bg-white text-black w-10 h-10 rounded-full flex items-center justify-center"
             >
-              <FaInstagramSquare />
+              <FaInstagramSquare className="w-6 h-6" />
             </a>
             <a
               href="https://web.facebook.com/?_rdc=1&_rdr#"
               target="blank"
               className="link link-hover bg-white text-black w-10 h-10 rounded-full flex items-center justify-center"
             >
-              <FaSquareFacebook />
+              <FaSquareFacebook className="w-6 h-6" />
             </a>
             <a
               href="https://x.com/"
               target="blank"
               className="link link-hover bg-white text-black w-10 h-10 rounded-full flex items-center justify-center"
             >
-              <FaSquareXTwitter />
+              <FaSquareXTwitter className="w-6 h-6" />
             </a>
           </div>
         </div>

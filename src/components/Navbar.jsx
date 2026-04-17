@@ -2,6 +2,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { FaChartLine, FaChartPie } from "react-icons/fa";
+import { IoIosHome } from "react-icons/io";
+import { MdOutlineWatchLater } from "react-icons/md";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -20,20 +23,21 @@ const Navbar = () => {
             <button
               className={`btn text-[#64748B] ${pathname === "/" && "bg-[#244D3F] text-white"} `}
             >
-              Home
+              <IoIosHome className="w-4 h-4" /> Home
             </button>
           </Link>
           <Link href={"/timeline"}>
             <button
               className={`btn text-[#64748B] ${pathname === "/timeline" && "bg-[#244D3F] text-white"} `}
             >
-              Timeline
+              <MdOutlineWatchLater className="w-4 h-4" /> Timeline
             </button>
           </Link>
           <Link href={"/stats"}>
             <button
               className={`btn text-[#64748B] ${pathname === "/stats" && "bg-[#244D3F] text-white"} `}
             >
+              <FaChartLine />
               Stats
             </button>
           </Link>
