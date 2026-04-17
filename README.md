@@ -4,7 +4,7 @@
 KeenKeeper is a dedicated friendship management dashboard designed to help users nurture and maintain their most meaningful connections. In a fast-paced world, it’s easy to lose touch; KeenKeeper ensures you stay on track with your social goals through visual analytics, interaction timelines, and smart contact reminders.
 
 ## 🚀 Live Demo
-**[[Website Link Here](https://mahmudul-keen-keeper.vercel.app/)]**
+**[[Website Link](https://mahmudul-keen-keeper.vercel.app/)]**
 
 
 ## ✨ Key Features
@@ -28,16 +28,12 @@ KeenKeeper is a dedicated friendship management dashboard designed to help users
 | **Animations** | Framer Motion & CSS Blobs |
 | **Deployment** | Vercel |
 
----
-
-## 📸 Screenshots
-![Web Page](<img src="public/images/mahmudul-keen-keeper.vercel.app_ (1).png" alt="Logo" width="200" />)
 
 ---
 
 
 ## 🤝 Contact
- Name - [Md. Mahmudul Hasan]
- Email - [mahmudul1106@gmail.com]
+ Name - Md. Mahmudul Hasan
+ Email - mahmudul1106@gmail.com
 
 ---
