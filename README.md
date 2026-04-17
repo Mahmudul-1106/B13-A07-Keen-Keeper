@@ -31,52 +31,13 @@ KeenKeeper is a dedicated friendship management dashboard designed to help users
 ---
 
 ## 📸 Screenshots
-*(Pro-tip: Add images here once you have deployed!)*
+![Web Page](<img src="public/images/mahmudul-keen-keeper.vercel.app_ (1).png" alt="Logo" width="200" />)
 
 ---
 
-## ⚙️ Local Setup Instructions
-
-Follow these steps to run the project locally:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/keenkeeper.git
-    ```
-2.  **Navigate to the project folder:**
-    ```bash
-    cd keenkeeper
-    ```
-3.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
-5.  **Open in your browser:**
-    Navigate to `http://localhost:3000`
-
----
-
-## 📂 Project Structure Highlights
-* `app/loading.jsx`: Global skeleton/spinner state for smooth data fetching.
-* `app/not-found.jsx`: Custom designed 404 error page.
-* `context/install.context.js`: State management for persistent timeline and friendship data.
-* `public/friends.json`: Local database for friend profiles.
-
----
 
 ## 🤝 Contact
-Your Name - [Your Email/LinkedIn/GitHub Link]
+ Name - [Md. Mahmudul Hasan]
+ Email - [mahmudul1106@gmail.com]
 
 ---
-
-### Final Checklist for your 50+10 Marks:
-1.  **Git Commits:** Ensure you have at least 8 commits.
-2.  **Responsive:** Open your site on your phone and check the 4-column vs 1-column grid.
-3.  **Toasts:** Ensure clicking "Call/Text/Video" actually pops up a notification.
-4.  **Analytics:** Ensure your Pie Chart is visible and using real data from your context.
-
-**Good luck with the submission! You’ve got a very professional setup here.**
