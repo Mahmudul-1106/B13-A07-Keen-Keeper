@@ -4,10 +4,10 @@ import { FaSquareFacebook, FaSquareXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="  bg-[#244D3F] text-[#FFF] pt-20 pb-5 px-10">
-      <div className="flex items-center justify-center flex-col text-center sm:footer-horizontal mb-20">
+    <footer className="  bg-[#244D3F] text-[#FFF] pt-10 pb-5 px-10">
+      <div className="flex items-center justify-center flex-col text-center sm:footer-horizontal mb-10">
         <div>
-          <h1 className="text-7xl font-bold mb-5">KeenKeeper</h1>
+          <h1 className="text-3xl md:text-7xl font-bold mb-5">KeenKeeper</h1>
           {/* <img src={footerLogo} alt="" /> */}
           <p>
             Your personal shelf of meaningful connections. Browse, tend, and
@@ -17,7 +17,7 @@ const Footer = () => {
 
         <div className="mt-5">
           <h6 className="footer-title">Social Links</h6>
-          <div className="flex gap-1">
+          <div className="flex gap-2">
             <a
               href="https://www.instagram.com/?hl=en"
               target="blank"
